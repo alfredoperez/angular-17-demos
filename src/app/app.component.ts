@@ -1,14 +1,30 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ChildrenOutletContexts, RouterLink, RouterOutlet} from '@angular/router';
+import {slideInAnimation} from "./route.animations";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterLink, RouterOutlet],
+  providers: [],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    slideInAnimation
+  ]
 })
 export class AppComponent {
-  title = 'angular-17-demos';
+  showMenu = false;
+
+  constructor(private contexts: ChildrenOutletContexts) {
+  }
+
+  toggleNavbar() {
+    this.showMenu = !this.showMenu;
+  }
+
+  getRouteAnimationData() {
+    return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
+  }
 }
