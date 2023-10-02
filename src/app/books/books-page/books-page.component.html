@@ -1,0 +1,21 @@
+<h1
+  class="font-black uppercase text-6xl md:text-8xl text-center py-8 px-4"
+>
+  Libros de
+  <span class="block text-[36px] md:text-[58px]">programación</span>
+</h1>
+<ul class="grid grid-cols-2 md:grid-cols-3 gap-3 px-4">
+  <li *ngFor="let book of books">
+    <a class="hover:scale-105 inline-block transition-all hover:contrast-125 hover:shadow-2xl"
+       [routerLink]="['/books', book.id]">
+      <img
+        alt="La portada del libro"
+        class="aspect-[389/500] h-full object-cover w-full max-w-full rounded"
+        [ngSrc]="book.img"
+        height="500"
+        width="389"
+        [style]="book.viewTransitionName"
+      />
+    </a>
+  </li>
+</ul>

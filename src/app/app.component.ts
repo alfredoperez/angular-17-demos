@@ -7,7 +7,6 @@ import {slideInAnimation} from "./route.animations";
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterLink, RouterOutlet],
-  providers: [],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
